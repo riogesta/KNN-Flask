@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">    
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Hasil Perhitungan Jarak</h5>
+        <div>
+            {% for i in range(jarak|length) %}
+                <li>Data Uji ke-{{ i + 1 }}</li>
+                <ul>
+                    {% for j in range(jarak[i]|length) %}
+                        <li>Indeks Tetangga ke-{{ j + 1 }}: {{ indeks[i][j] }}</li>
+                        <li>Jarak ke Tetangga ke-{{ j + 1 }}: {{ jarak[i][j] }}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

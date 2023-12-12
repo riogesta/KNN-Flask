@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Data Uji</h5>
+        <div>
+            <p>
+                terkena gagal ginjal kronis: <b>{{ y_pred[1] }}</b> <br>
+                Tidak terkena gagal ginjal kronis: <b>{{ y_pred[2] }}</b>
+            </p>
+        </div>
+    </div> 
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Data Uji</h5>
+        <div>
+            <div class="table-responsive">
+                <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                        <tr>
+                            {% for nama_kolom in kolom %}
+                                <th>{{ nama_kolom }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row_data in row %}
+                        <tr>
+                            {% for cell in row_data %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+</div>
+{% endblock %}

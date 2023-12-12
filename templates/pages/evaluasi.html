@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">    
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">confussion matrix</h5>
+        <div>
+            <table>
+                <tr>
+                    <td>True positif</td>
+                    <td> : {{ data.confussion_matrix[0][0] }}</td>
+                </tr>
+                <tr>
+                    <td>False positif</td>
+                    <td> : {{ data.confussion_matrix[0][1] }}</td>
+                </tr>
+                <tr>
+                    <td>False negatif</td>
+                    <td> : {{ data.confussion_matrix[1][0] }}</td>
+                </tr>
+                <tr>
+                    <td>True Negatif</td>
+                    <td> : {{ data.confussion_matrix[1][1] }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card">    
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">AKURASI</h5>
+        <div>
+            
+            <p>Akurasi: <b>{{ akurasi }}%</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+</script>
+{% endblock %}

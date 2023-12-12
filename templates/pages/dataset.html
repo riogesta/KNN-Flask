@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">unggah dataset</h5>
+        <div>
+            <div class="mb-3">
+                <form action="{{ url_for('dataset') }}" method="POST" enctype="multipart/form-data">
+                    <label for="csv-file" class="form-label">Pilih dataset</label>
+                    <input type="file" name="file" class="form-control" id="csv-file"  aria-describedby="emailHelp">
+                </div>
+                <button type="submit" class="btn btn-primary">Gunakan</button>
+            </form>
+        </div>
+    </div> 
+</div>
+
+{% if not status_data == None %}
+<div class="alert alert-secondary" role="alert">
+    {{ status_data }}
+</div>
+{% else %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Preview Data</h5>
+        <div>
+            <div class="table-responsive">
+                <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                        <tr>
+                            {% for nama_kolom in kolom %}
+                                <th>{{ nama_kolom }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row_data in row %}
+                        <tr>
+                            {% for cell in row_data %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+</div>
+{% endif %}
+
+{% endblock %}

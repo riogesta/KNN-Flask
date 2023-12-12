@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{{ url_for('klasifikasi') }}" method="post" onsubmit="return validasi()">
+<div class="card">
+    <div class="card-body">
+        <div>
+            <div class="mb-3">
+                <label for="nilai-k" class="form-label">Nilai K</label>
+                <input type="number" name="nilai-k" class="form-control" id="nilai-k" placeholder="masukan nilai K" >
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Klasifikasi</h5>
+        <div>
+                {% for col in kolom %}
+                <div class="mb-3">
+                    <label for="{{ col }}" class="form-label">{{ col }}</label>
+                    <input type="text" name="{{ col }}" class="form-control" id="{{ col }}" placeholder="masukan {{ col }}" >
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Klasifikasi</button>
+            </form>
+        </div>
+    </div> 
+</div>
+
+<script>
+// Fungsi untuk melakukan validasi
+function validasi() {
+    // Ambil semua elemen input
+    var inputs = document.querySelectorAll('input');
+    
+    // Pola regex yang sesuai dengan kriteria
+    var regex = /^\d+(\.\d+)?$/;
+  
+    // Loop melalui semua elemen input
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      var nilaiInput = input.value;
+  
+      // Cek apakah nilai input sesuai dengan pola regex
+      if (!regex.test(nilaiInput)) {
+        alert('Input ' + input.name + ' tidak sesuai dengan kriteria yang diizinkan.');
+        return false; // Hentikan validasi jika ada yang tidak sesuai
+      }
+    }
+    
+    // Jika semua input memenuhi kriteria
+    // alert('Semua input memenuhi kriteria yang diizinkan.');
+    return true; // Submit form atau lakukan tindakan berikutnya
+}
+  
+</script>
+
+{% endblock %}

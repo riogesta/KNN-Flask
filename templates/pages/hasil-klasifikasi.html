@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Hasil</h5>
+        <div>
+        {% if prediksi[0] == 1 %}
+            <p><b>Tidak terkena gagal ginjal kronis</b></p>
+        {% elif prediksi[0] == 2 %}
+            <p><b>Terkena gagal ginjal kronis</b></p>
+        {% endif %}
+        </div>
+        <div class="mt-5">
+            <h5 class="card-title fw-semibold">Tetangga terdekat</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for column in tetangga_terdekat.columns %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in tetangga_terdekat.rows %}
+                    <tr>
+                        {% for cell in row %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div> 
+</div>
+{% endblock %}
