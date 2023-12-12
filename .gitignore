@@ -1,0 +1,7 @@
+# ignore all virtual envinronment
+.venv/*
+
+#ignore all pycache
+__pycache__
+/__pycache__/*
+*/__pycache__/*
