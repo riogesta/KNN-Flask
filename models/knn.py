@@ -35,6 +35,9 @@ def knn_method():
     # menentukkan prediksi
     y_pred = knn.predict(x_test)
     
+    # menjalankan generate_confussion_matrix
+    generate_consuffion_matrix(y_pred=y_pred, y_test=y_test)
+    
     distances, indices = knn.kneighbors(x_test)
     
     return {
@@ -71,6 +74,24 @@ def find_k_nearest_neighbors(input, k):
     nearest_neighbors = data.iloc[sorted_indices[:k]]
 
     return nearest_neighbors
+
+def generate_consuffion_matrix(y_test, y_pred):
+    from sklearn.metrics import confusion_matrix
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    
+    cm = confusion_matrix(y_test, y_pred)
+    
+    TP = cm[1,1]
+    FP = cm[0,1]
+    TN = cm[0,0]
+    FN = cm[1,0]
+    
+    plt.figure(figure=(8,6))
+    sns.heatmap([[TN, FP], [FN, TP]], annot=True, fmt="d", cmap="Blues")
+    plt.xlabel("Predicted")
+    plt.ylabel("True")
+    plt.savefig("./static/assets/images/confussion_matrix.png")
     
 def prediksi(input):
     
