@@ -57,13 +57,21 @@ def evaluasi_data():
         
         data = knn.knn_method()
         akurasi = round(data['akurasi']['accuracy'] * 100, 2)
-        # akurasi = data['akurasi']['accuracy']
+        akurasi_detail = data['akurasi']
+        
+        for key, value in akurasi_detail.items():
+            if isinstance(value, float):
+                akurasi_detail[key] = {'value': value}
+        
+        akurasi2 = pd.DataFrame.from_dict(akurasi_detail, orient='index')
+        akurasi2 = akurasi2.fillna('')
         
         return render_template(
             './pages/evaluasi.html',
             title = "Evaluasi Data",
             data = data,
-            akurasi = akurasi
+            akurasi = akurasi,
+            akurasi2 = akurasi2.to_html(classes='table table-bordered', justify='left')
         )
     
 @app.route("/data-uji", methods=['GET', 'POST'])
