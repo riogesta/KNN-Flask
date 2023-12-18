@@ -28,7 +28,7 @@ def knn_method():
     knn = KNeighborsClassifier(n_neighbors=check_k_value())
     
     # membagi data test , train
-    x_train, x_test, y_train, y_test = train_test_split(x, y)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
     
     # memasukkan data training pada fungsi klasifikasi untuk KNN
     knn.fit(x_train, y_train)
