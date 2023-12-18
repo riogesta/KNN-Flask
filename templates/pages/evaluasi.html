@@ -1,36 +1,37 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<div class="card">    
+{% extends 'base.html' %} {% block content %}
+<div class="card">
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">confussion matrix</h5>
         <div class="text-center">
-            <img src="{{ url_for('static', filename='/assets/images/confussion_matrix.png') }}" alt="">
+            <img
+                src="{{ url_for('static', filename='/assets/images/confussion_matrix.png') }}"
+                alt=""
+            />
         </div>
         <div>
             <table>
                 <tr>
                     <td>True positif</td>
-                    <td> : {{ data.confussion_matrix[0][0] }}</td>
+                    <td>: {{ data.confussion_matrix[0][0] }}</td>
                 </tr>
                 <tr>
                     <td>False positif</td>
-                    <td> : {{ data.confussion_matrix[0][1] }}</td>
+                    <td>: {{ data.confussion_matrix[0][1] }}</td>
                 </tr>
                 <tr>
                     <td>False negatif</td>
-                    <td> : {{ data.confussion_matrix[1][0] }}</td>
+                    <td>: {{ data.confussion_matrix[1][0] }}</td>
                 </tr>
                 <tr>
                     <td>True Negatif</td>
-                    <td> : {{ data.confussion_matrix[1][1] }}</td>
+                    <td>: {{ data.confussion_matrix[1][1] }}</td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
 
-<div class="card">    
+<div class="card">
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">AKURASI: {{ akurasi }}%</h5>
         <div>
@@ -40,7 +41,5 @@
     </div>
 </div>
 
-<script>
-    
-</script>
+<script></script>
 {% endblock %}
